@@ -137,8 +137,8 @@
 					user_agent: navigator.userAgent
 				};
 
-				if (typeof opts.shouldSkip === 'function') {
-					if (opts.shouldSkip()) {
+				if (typeof opts.skip_function === 'function') {
+					if (opts.skip_function()) {
 						// Exit early!
 						return;
 					}

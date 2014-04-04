@@ -16,7 +16,7 @@ js_client_logger.init({
 ```
 js_client_logger.init({
     logger_url: "/services/logger/log",
-    shouldSkip: function () {
+    skip_function: function () {
         // example of how to skip certain user agents
         // anything that returns true will be skipped
         if (navigator.userAgent.indexOf('spider') !== -1) {
