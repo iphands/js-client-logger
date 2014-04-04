@@ -6,14 +6,14 @@ By default window.onerror and JQuery ajaxErrors are intercepted, logged and then
 This lets you see what errors clients run into without teaching them about various JavaScript consoles.
 
 ##Simple Usage
-~~
+```
 js_client_logger.init({
     logger_url: "/services/logger/log"
 });
-~~
+```
 
 ##A logger that blacklists a User Agent
-~~
+```
 js_client_logger.init({
     logger_url: "/services/logger/log",
     shouldSkip: function () {
@@ -24,10 +24,10 @@ js_client_logger.init({
         }
     }
 });
-~~
+```
 
 ##What the payload to the server looks like
-~~
+```
 {
   "message": {
     "error_message": "Uncaught TypeError: Cannot read property 'bar' of undefined",
@@ -38,4 +38,4 @@ js_client_logger.init({
   "path": "https://localhost/js-client-logger/example.html",
   "page_log_count": 1
 }
-~~
+```
