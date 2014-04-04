@@ -1,0 +1,45 @@
+<html>
+  <head>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.11/require.min.js"></script>
+  </head>
+
+  <body>
+	<button id="error">Generate a normal JS error</button>
+	<button id="jq_error">Generate a JQuery ajax error</button>
+	<script type="text/javascript">
+
+	  require.config({
+		  paths: {
+			  'jquery'           : '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min',
+			  'js-client-logger' : './js-client-logger'
+		  }
+	  });
+
+	  require(['js-client-logger'], function (logger) {
+		  logger.init({
+			  logger_url: "/services/logger/log",
+			  shouldSkip: function () {
+				  // example of how to skip certain user agents
+				  // anything that returns true will be skipped
+				  if (navigator.userAgent.indexOf('Baiduspider') !== -1) {
+					  return true;
+				  }
+			  }
+		  });
+	  });
+
+	  require(['jquery'], function ($) {
+		  $('#error').click(function () {
+			  console.log('IM GONNA THROW AN ERROR!!!!');
+			  var foo;
+			  foo.bar.baz = "foobar!!!";
+		  });
+
+		  $('#jq_error').click(function () {
+			  $.get('https://example.com/fdsafsafs/fdsafsa/fdsafsa', function () { });
+		  });
+	  });
+
+	</script>
+  </body>
+</html>
