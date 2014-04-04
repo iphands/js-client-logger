@@ -51,5 +51,5 @@ $ gem install webrick
 $ ruby example_server/server.rb
 ```
 
-Then hit http://localhost:55555/example.html with your browser.<br/>
+Then hit http://localhost:55555/ with your browser.<br/>
 Log files will be written to /tmp/js-client-logger.output by default.

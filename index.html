@@ -7,6 +7,14 @@
   <body>
 	<button id="error">Generate a normal JS error</button>
 	<button id="jq_error">Generate a JQuery ajax error</button>
+	<br/>
+	<br/>
+	<div>
+	  <div>
+		<textarea></textarea>
+	  </div>
+	  <button id="info_log">Log this text at the info level</button>
+	</div>
 
 	<script type="text/javascript">
 		js_client_logger.init({
@@ -18,6 +26,10 @@
 					return true;
 				}
 			}
+		});
+
+		$('#info_log').click(function () {
+			 js_client_logger.log('foo', 'info');
 		});
 
 		$('#error').click(function () {
