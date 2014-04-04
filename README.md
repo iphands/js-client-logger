@@ -39,3 +39,17 @@ js_client_logger.init({
   "page_log_count": 1
 }
 ```
+
+##Example server code
+
+Provided is a stupid simple server that writes the POST data from the JavaScript logger to disk.<br/>
+I would not use this in production, but it should give you an idea of how to build a logging service into your existing web application.
+
+To run the example:
+```
+$ gem install webrick
+$ ruby example_server/server.rb
+```
+
+Then hit http://localhost:55555/example.html with your browser.<br/>
+Log files will be written to /tmp/js-client-logger.output by default.

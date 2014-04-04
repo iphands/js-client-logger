@@ -1,6 +1,7 @@
 require 'webrick'
 
-server = WEBrick::HTTPServer.new :BindAddress => "0.0.0.0", :Port => 55555
+root = File.expand_path '.'
+server = WEBrick::HTTPServer.new :BindAddress => "0.0.0.0", :Port => 55555, :DocumentRoot => root
 
 class Simple < WEBrick::HTTPServlet::AbstractServlet
   def do_POST request, response
