@@ -101,9 +101,11 @@
 
 			if (typeof sev !== 'undefined') {
 
-				if (window.navigator.userAgent.indexOf('Baiduspider') !== -1) {
-					// prevent spider from logging to the server
-					return;
+				if (typeof opts.skip_function === 'function') {
+					if (opts.skip_function()) {
+						// Exit early!
+						return;
+					}
 				}
 
 				// try and end the logging if there were to many per page
@@ -114,6 +116,10 @@
 					logger_tries = logger_tries + 1;
 				}
 
+				// run the user supplied collect info code
+				if (typeof opts.collect_info === 'function') {
+					opts.collect_info(message);
+				}
 
 				try {
 					private_functions.do_remote_log(message, sev, server_only);
@@ -136,13 +142,6 @@
 					line_number: lineNum,
 					user_agent: navigator.userAgent
 				};
-
-				if (typeof opts.skip_function === 'function') {
-					if (opts.skip_function()) {
-						// Exit early!
-						return;
-					}
-				}
 
 				if (typeof colNum !== 'undefined') {
 					obj.column_number = colNum;
